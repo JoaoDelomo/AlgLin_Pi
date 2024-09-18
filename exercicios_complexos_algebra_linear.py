@@ -255,6 +255,13 @@ def calcular_tensao_estrutura():
 # Crie uma função chamada calcular_distancia_pontos() que retorna a distância entre os pontos.
 # 
 
+def calcular_distancia_pontos():
+    P1 = np.array([2, 3, 5])
+    P2 = np.array([7, -2, 1])
+
+    distancia = np.linalg.norm(P2 - P1)
+    return distancia
+
 # 
 # ### Exercício 2: Interseção de retas no espaço 3D
 # 
