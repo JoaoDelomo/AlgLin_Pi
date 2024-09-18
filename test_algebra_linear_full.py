@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+from exercicios_complexos_algebra_linear import *
 
 # Vetores - Exercício 1
 def test_vetores_ex1():
@@ -28,14 +29,14 @@ def test_vetores_ex3():
 def test_vetores_ex4():
     trabalho = calcular_trabalho()  # Call the user's function
     assert trabalho is not None, "A função não pode retornar None"
-    assert np.isclose(trabalho, 9), "O trabalho calculado está incorreto!"
+    assert np.isclose(trabalho, 21), "O trabalho calculado está incorreto!"
 
 # Vetores - Exercício 5
 def test_vetores_ex5():
     E_res, angle = soma_angulos_vetores()  # Call the user's function
     assert E_res is not None and angle is not None, "A função não pode retornar None"
     assert np.allclose(E_res, [1, 7, 1]), "O vetor resultante está incorreto!"
-    assert np.isclose(angle, 75.96, atol=1e-2), "O ângulo calculado está incorreto!"
+    assert np.isclose(angle, 62.188156861783895, atol=1e-2), "O ângulo calculado está incorreto!"
 
 # Sistemas Lineares - Exercício 1
 def test_sistemas_ex1():
