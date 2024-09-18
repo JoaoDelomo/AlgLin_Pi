@@ -53,7 +53,6 @@ def calcular_velocidade_aceleracao(t):
     
     return velocidade
 
-
 # 
 # ### Exercício 3: Projeção de vetores
 # 
@@ -87,7 +86,6 @@ def calcular_trabalho():
     trabalho = np.dot(F, d)
     return trabalho
 
-
 # 
 # ### Exercício 5: Operações com vetores em eletricidade
 # 
@@ -117,7 +115,6 @@ def soma_angulos_vetores():
     vetor_resultante = E_1 + E_2
 
     return vetor_resultante, angulo_graus
-
 
 # ## 2. Sistemas Lineares - Aplicações
 
