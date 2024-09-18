@@ -5,143 +5,126 @@ import pytest
 def test_vetores_ex1():
     F1 = np.array([1, 2, -1])
     F2 = np.array([-1, 0, 3])
-    F3 = -F1 - F2  # For equilibrium
-    assert np.allclose(F3, [0, -2, -2])
+    F3 = calcular_forca_equilibrio()  # Call the user's function
+    assert F3 is not None, "A função não pode retornar None"
+    assert np.allclose(F3, -F1 - F2), "O vetor F3 está incorreto!"
 
 # Vetores - Exercício 2
 def test_vetores_ex2():
     t = 1.0  # Example time value
-    velocidade = np.array([6*t, 2, -3*t**2])
-    assert np.allclose(velocidade, [6, 2, -3])
+    velocidade = calcular_velocidade_aceleracao(t)  # Call the user's function
+    assert velocidade is not None, "A função não pode retornar None"
+    assert np.allclose(velocidade, [6*t, 2, -3*t**2]), "A velocidade está incorreta!"
 
 # Vetores - Exercício 3
 def test_vetores_ex3():
     F = np.array([6, 8, -2])
     d = np.array([1, 1, 0])
-    proj_F_d = np.dot(F, d) / np.linalg.norm(d)**2 * d
-    assert np.allclose(proj_F_d, [7, 7, 0])
+    proj_F_d = projetar_forca()  # Call the user's function
+    assert proj_F_d is not None, "A função não pode retornar None"
+    assert np.allclose(proj_F_d, [7, 7, 0]), "A projeção está incorreta!"
 
 # Vetores - Exercício 4
 def test_vetores_ex4():
-    r_prime = np.array([1, 2, 2])
-    F = np.array([4, -1, 3])
-    trabalho = np.dot(F, r_prime)
-    assert np.isclose(trabalho, 9)
+    trabalho = calcular_trabalho()  # Call the user's function
+    assert trabalho is not None, "A função não pode retornar None"
+    assert np.isclose(trabalho, 9), "O trabalho calculado está incorreto!"
 
 # Vetores - Exercício 5
 def test_vetores_ex5():
-    E1 = np.array([2, 3, -1])
-    E2 = np.array([-1, 4, 2])
-    E_res = E1 + E2
-    dot_product = np.dot(E1, E2)
-    angle = np.arccos(dot_product / (np.linalg.norm(E1) * np.linalg.norm(E2))) * 180 / np.pi
-    assert np.allclose(E_res, [1, 7, 1])
-    assert np.isclose(angle, 75.96, atol=1e-2)
+    E_res, angle = soma_angulos_vetores()  # Call the user's function
+    assert E_res is not None and angle is not None, "A função não pode retornar None"
+    assert np.allclose(E_res, [1, 7, 1]), "O vetor resultante está incorreto!"
+    assert np.isclose(angle, 75.96, atol=1e-2), "O ângulo calculado está incorreto!"
 
 # Sistemas Lineares - Exercício 1
 def test_sistemas_ex1():
-    A = np.array([[2, 1, 1], [3, -2, 4], [1, 5, -1]])
-    B = np.array([8, 14, 6])
-    X = np.linalg.solve(A, B)
-    assert np.allclose(X, [1, 2, 3])
+    X = resolver_mistura_solucoes()  # Call the user's function
+    assert X is not None, "A função não pode retornar None"
+    assert np.allclose(X, [1, 2, 3]), "A solução do sistema está incorreta!"
 
 # Sistemas Lineares - Exercício 2
 def test_sistemas_ex2():
-    A = np.array([[1, -2, 1], [3, 1, -1], [2, -1, 2]])
-    B = np.array([10, 20, 15])
-    X = np.linalg.solve(A, B)
-    assert np.allclose(X, [5, 3, 2])
+    X = resolver_trafego()  # Call the user's function
+    assert X is not None, "A função não pode retornar None"
+    assert np.allclose(X, [5, 3, 2]), "A solução do sistema está incorreta!"
 
 # Sistemas Lineares - Exercício 3
 def test_sistemas_ex3():
-    A = np.array([[10, 5, -2], [-3, 8, 4], [6, -1, 3]])
-    B = np.array([12, 7, 15])
-    X = np.linalg.solve(A, B)
-    assert np.allclose(X, [1, 2, 3])
+    X = resolver_correntes_circuito()  # Call the user's function
+    assert X is not None, "A função não pode retornar None"
+    assert np.allclose(X, [1, 2, 3]), "A solução do sistema está incorreta!"
 
 # Sistemas Lineares - Exercício 4
 def test_sistemas_ex4():
-    A = np.array([[3, 2, 1], [4, -1, 2], [1, 3, 3]])
-    B = np.array([120, 150, 180])
-    X = np.linalg.solve(A, B)
-    assert np.allclose(X, [10, 20, 30])
+    X = prever_demanda()  # Call the user's function
+    assert X is not None, "A função não pode retornar None"
+    assert np.allclose(X, [10, 20, 30]), "A previsão de demanda está incorreta!"
 
 # Sistemas Lineares - Exercício 5
 def test_sistemas_ex5():
-    A = np.array([[5, 3, -1], [4, -2, 6], [-3, 5, 4]])
-    B = np.array([0, 10, 15])
-    X = np.linalg.solve(A, B)
-    assert np.allclose(X, [1, 2, 3])
+    X = calcular_tensao_estrutura()  # Call the user's function
+    assert X is not None, "A função não pode retornar None"
+    assert np.allclose(X, [1, 2, 3]), "As tensões nas barras estão incorretas!"
 
 # Geometria Analítica - Exercício 1
 def test_geometria_ex1():
-    P1 = np.array([2, 3, 5])
-    P2 = np.array([7, -2, 1])
-    distancia = np.linalg.norm(P2 - P1)
-    assert np.isclose(distancia, 7.0711, atol=1e-4)
+    distancia = calcular_distancia_pontos()  # Call the user's function
+    assert distancia is not None, "A função não pode retornar None"
+    assert np.isclose(distancia, 7.0711, atol=1e-4), "A distância calculada está incorreta!"
 
 # Geometria Analítica - Exercício 2
 def test_geometria_ex2():
-    r1_t = np.array([1 + 2, -1 + 1, 3*1])
-    r2_s = np.array([4 + 1, 2 - 1, 5 + 2*1])
-    assert np.allclose(r1_t, r2_s)
+    intersecao = encontrar_intersecao_retas()  # Call the user's function
+    assert intersecao is not None, "A função não pode retornar None"
+    assert np.allclose(intersecao, [3, 0, 3]), "O ponto de interseção está incorreto!"
 
 # Geometria Analítica - Exercício 3
 def test_geometria_ex3():
-    P = np.array([1, -2, 3])
-    plano_normal = np.array([2, -3, 1])
-    distancia = abs(np.dot(plano_normal, P) - 4) / np.linalg.norm(plano_normal)
-    assert np.isclose(distancia, 3.3166, atol=1e-4)
+    distancia = calcular_distancia_plano()  # Call the user's function
+    assert distancia is not None, "A função não pode retornar None"
+    assert np.isclose(distancia, 3.3166, atol=1e-4), "A distância ao plano está incorreta!"
 
 # Geometria Analítica - Exercício 4
 def test_geometria_ex4():
-    plano1_normal = np.array([3, 4, -2])
-    plano2_normal = np.array([1, -1, 3])
-    cos_theta = np.dot(plano1_normal, plano2_normal) / (np.linalg.norm(plano1_normal) * np.linalg.norm(plano2_normal))
-    angle = np.arccos(cos_theta) * 180 / np.pi
-    assert np.isclose(angle, 83.44, atol=1e-2)
+    angle = calcular_angulo_planos()  # Call the user's function
+    assert angle is not None, "A função não pode retornar None"
+    assert np.isclose(angle, 83.44, atol=1e-2), "O ângulo entre os planos está incorreto!"
 
 # Geometria Analítica - Exercício 5
 def test_geometria_ex5():
-    P = np.array([7, 8, 9])
-    r_dir = np.array([4, 5, 6])
-    r0 = np.array([1, 2, 3])
-    proj = r0 + (np.dot(P - r0, r_dir) / np.dot(r_dir, r_dir)) * r_dir
-    assert np.allclose(proj, [5, 6, 7])
+    proj = projetar_ponto_reta()  # Call the user's function
+    assert proj is not None, "A função não pode retornar None"
+    assert np.allclose(proj, [5, 6, 7]), "A projeção do ponto sobre a reta está incorreta!"
 
 # Bases - Exercício 1
 def test_bases_ex1():
-    B = np.array([[1, 2], [3, 4]])
-    v = np.array([5, 6])
-    coord = np.linalg.solve(B, v)
-    assert np.allclose(coord, [-4, 4.5])
+    coord = coordenadas_base()  # Call the user's function
+    assert coord is not None, "A função não pode retornar None"
+    assert np.allclose(coord, [-4, 4.5]), "As coordenadas do vetor estão incorretas!"
 
 # Bases - Exercício 2
 def test_bases_ex2():
-    v1 = np.array([2, 1])
-    v2 = np.array([1, -1])
-    u1 = v1 / np.linalg.norm(v1)
-    u2 = v2 - np.dot(u1, v2) * u1
-    u2 = u2 / np.linalg.norm(u2)
-    assert np.allclose(u1, [0.8944, 0.4472], atol=1e-4)
-    assert np.allclose(u2, [0.4472, -0.8944], atol=1e-4)
+    u1, u2 = gram_schmidt()  # Call the user's function
+    assert u1 is not None and u2 is not None, "A função não pode retornar None"
+    assert np.allclose(u1, [0.8944, 0.4472], atol=1e-4), "O vetor u1 está incorreto!"
+    assert np.allclose(u2, [0.4472, -0.8944], atol=1e-4), "O vetor u2 está incorreto!"
 
 # Bases - Exercício 3
 def test_bases_ex3():
-    B = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
-    B_prime = np.array([[1, 1, 0], [0, 1, 1], [1, 0, 1]])
-    T = np.linalg.inv(B).dot(B_prime)
-    assert np.allclose(T, [[1, 1, 0], [0, 1, 1], [1, 0, 1]])
+    T = transformacao_base()  # Call the user's function
+    assert T is not None, "A função não pode retornar None"
+    assert np.allclose(T, [[1, 1, 0], [0, 1, 1], [1, 0, 1]]), "A matriz de transformação está incorreta!"
 
 # Bases - Exercício 4
 def test_bases_ex4():
-    v1 = np.array([1, 2, 3])
-    v2 = np.array([2, 4, 6])
-    assert np.allclose(v2, 2 * v1)
+    v2 = verificar_independencia_linear()  # Call the user's function
+    assert v2 is not None, "A função não pode retornar None"
+    assert np.allclose(v2, 2 * np.array([1, 2, 3])), "A combinação linear está incorreta!"
 
 # Bases - Exercício 5
 def test_bases_ex5():
-    A = np.array([[2, 1], [1, 3]])
-    v = np.array([3, 2])
-    transformed_v = A.dot(v)
-    assert np.allclose(transformed_v, [8, 9])
+    transformed_v = aplicar_transformacao_linear()  # Call the user's function
+    assert transformed_v is not None, "A função não pode retornar None"
+    assert np.allclose(transformed_v, [8, 9]), "A transformação linear está incorreta!"
+
