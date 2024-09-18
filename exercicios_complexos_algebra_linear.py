@@ -134,6 +134,15 @@ def soma_angulos_vetores():
 # Crie uma função chamada resolver_mistura_solucoes() que retorna a solução do sistema.
 # 
 
+def resolver_mistura_solucoes():
+    A = np.array([[2, 1, 1],
+                  [3, -2, 4],
+                  [1, 5, -1]])
+    B = np.array([8, 14, 6])
+
+    X = np.linalg.solve(A, B)
+    return X
+
 # 
 # ### Exercício 2: Tráfego em interseções de trânsito
 # 
@@ -149,6 +158,16 @@ def soma_angulos_vetores():
 # 
 # Crie uma função chamada resolver_trafego() que retorna o fluxo de carros.
 # 
+
+def resolver_trafego():
+    A = np.array([[1, -2, 1],
+                  [3, 1, -1],
+                  [2, -1, 2]])
+    
+    B = np.array([10, 20, 15])
+
+    X = np.linalg.solve(A, B)
+    return X
 
 # 
 # ### Exercício 3: Rede de circuitos elétricos
@@ -166,6 +185,16 @@ def soma_angulos_vetores():
 # Crie uma função chamada resolver_correntes_circuito() que retorna as correntes nas malhas.
 # 
 
+def resolver_correntes_circuito():
+    A = np.array([[10, 5, -2],
+                  [-3, 8, 4],
+                  [6, -1, 3]])
+    
+    B = np.array([12, 7, 15])
+
+    X = np.linalg.solve(A, B)
+    return X
+
 # 
 # ### Exercício 4: Previsão de demanda de produtos
 # 
@@ -181,6 +210,16 @@ def soma_angulos_vetores():
 # 
 # Crie uma função chamada prever_demanda() que retorna a previsão da demanda.
 
+def prever_demanda():
+    A = np.array([[3, 2, 1],
+                  [4, -1, 2],
+                  [1, 3, 3]])
+    
+    B = np.array([120, 150, 180])
+
+    X = np.linalg.solve(A, B)
+    return X
+
 # 
 # ### Exercício 5: Equilíbrio de forças em uma estrutura
 # 
@@ -195,6 +234,16 @@ def soma_angulos_vetores():
 # Resolva o sistema de equações para determinar as tensões nas barras.
 # 
 # Crie uma função chamada calcular_tensao_estrutura() que retorna as tensões nas barras.
+
+def calcular_tensao_estrutura():
+    A = np.array([[5, 3, -1],
+                  [4, -2, 6],
+                  [-3, 5, 4]])
+    
+    B = np.array([0, 10, 15])
+
+    X = np.linalg.solve(A, B)
+    return X
 
 # ## 3. Geometria Analítica - Aplicações
 
